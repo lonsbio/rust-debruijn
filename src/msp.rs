@@ -73,7 +73,7 @@ pub fn simple_scan<V: Vmer, P: Kmer>(
      if seq.len() >= (1 << 32) {
      warn!(
         "Sequence length ({}) exceeds 2^32 elements; may overflow 32-bit index!",
-        self.seq.len()
+        seq.len()
     );
     }
     
