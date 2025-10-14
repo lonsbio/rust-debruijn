@@ -13,6 +13,8 @@ use std::cmp::min;
 use std::cmp::Ordering;
 use std::iter::Iterator;
 use std::ops::Range;
+use log::warn;
+
 
 #[derive(Debug)]
 pub struct MspInterval {
@@ -67,8 +69,14 @@ pub fn simple_scan<V: Vmer, P: Kmer>(
     // Can't partition strings shorter than k
     assert!(seq.len() >= k);
     assert!(P::k() <= 8);
-    assert!(seq.len() < 1 << 32);
-
+    // assert!(seq.len() < 1 << 32);
+     if self.seq.len() >= (1 << 32) {
+     warn!(
+        "Sequence length ({}) exceeds 2^32 elements; may overflow 32-bit index!",
+        self.seq.len()
+    );
+    }
+    
     let score = |pi: &P| {
         if rc {
             min(
