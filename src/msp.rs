@@ -13,7 +13,7 @@ use std::cmp::min;
 use std::cmp::Ordering;
 use std::iter::Iterator;
 use std::ops::Range;
-use log::warn;
+//use log::warn;
 
 
 #[derive(Debug)]
@@ -71,7 +71,7 @@ pub fn simple_scan<V: Vmer, P: Kmer>(
     assert!(P::k() <= 8);
     // assert!(seq.len() < 1 << 32);
      if seq.len() >= (1 << 32) {
-     warn!(
+     println!(
         "Sequence length ({}) exceeds 2^32 elements; may overflow 32-bit index!",
         seq.len()
     );
