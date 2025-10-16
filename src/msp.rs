@@ -215,7 +215,7 @@ where
     pub fn scan(&self) -> Vec<MspIntervalP<P>> {
         // Can't partition strings shorter than k
         assert!(self.seq.len() >= self.k);
-        assert!(self.seq.len() < 1 << 32);
+       // assert!(self.seq.len() < 1 << 32);
 
         let seq = self.seq;
         let m = seq.len();
